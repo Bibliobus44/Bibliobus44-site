@@ -1,0 +1,524 @@
+<div id="public-site">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bibliobus44 — Transports en commun en Loire-Atlantique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="bibliobus.css">
+  
+
+</head>
+
+<body>
+
+<!-- ══ NAVIGATION ══ -->
+<nav class="navbar">
+
+  <a class="nav-logo" onclick="showTab('articles')">
+
+    
+      <img src="Logo_Bibliobus_44_carre.png"
+           alt="Logo Bibliobus44"
+           class="logo-icon">
+    
+
+    
+
+  </a>
+
+  <button id="mobile-menu-btn">☰</button>
+
+  <div class="nav-links">
+
+  <button class="nav-item active" data-tab="articles" onclick="showTab('articles')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      <polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+    Accueil
+  </button>
+
+  <button class="nav-item" data-tab="le concept" onclick="showTab('le concept')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    Le concept
+  </button>
+
+  <button class="nav-item" data-tab="news" onclick="showTab('news')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/>
+      <line x1="16" y1="17" x2="8" y2="17"/>
+    </svg>
+    News
+  </button>
+
+  <button class="nav-item" data-tab="archives" onclick="showTab('archives')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="21 8 21 21 3 21 3 8"/>
+      <rect x="1" y="3" width="22" height="5"/>
+      <line x1="10" y1="12" x2="14" y2="12"/>
+    </svg>
+    Archives
+  </button>
+
+  <button class="nav-item" data-tab="tanecdotes" onclick="showTab('tanecdotes')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    Tan'ecdotes
+  </button>
+
+  <button class="nav-item" data-tab="extras" onclick="showTab('extras')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>
+    Extras
+  </button>
+
+  <button class="nav-item" data-tab="liens" onclick="showTab('liens')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+    </svg>
+    Liens
+  </button>
+
+  
+  
+  </div>
+
+  <button id="search-btn" class="nav-item search-btn" aria-label="Rechercher">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-4-4"/>
+    </svg>
+    
+  </button>
+
+ 
+
+  <div id="search-overlay" class="search-overlay">
+
+    <div class="search-box">
+
+        <button
+            id="close-search"
+            class="close-search"
+            aria-label="Fermer">
+            ✕
+        </button>
+
+        <h2>Rechercher un article</h2>
+
+        <input
+            type="text"
+            id="article-search"
+            placeholder="Rechercher un article..."
+            autocomplete="off"
+        >
+
+        <div id="search-results"></div>
+
+    </div>
+
+  </div>
+
+  
+
+</nav>
+
+<!-- ══ PAGE ARTICLE ══ -->
+<div id="page-article">
+  <div class="article-header">
+
+    <button class="article-retour" onclick="fermerArticle()">
+    ← Retour aux articles
+    </button>
+    <h1 id="article-titre"></h1>
+    <div class="article-meta">
+      <span id="article-date"></span>
+      <span id="article-categorie-view"></span>
+    </div>
+  </div>
+  <div class="article-contenu">
+    <div id="article-texte"></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     PANEL — ARTICLES
+══════════════════════════════ -->
+<div class="tab-panel active" id="panel-articles">
+
+  
+  
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Loire-Atlantique · Département 44</div>
+      <h1 class="hero-title">Biblio<em>bus</em><br/>44</h1>
+    </div>
+    <div>
+      <p class="hero-desc">Bienvenue dans la bibliothèque des transports en commun de Nantes, de son agglomération, et du département de Loire Atlantique.</p>
+      
+    </div>
+  </div>
+
+  
+
+  <section class="articles-section">
+    <h2 class="section-label">Articles récents</h2>
+  <div id="articles-grid" class="articles-grid">
+    <div class="placeholder">
+      <div class="placeholder-ring">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <h3>Chargement des articles...</h3>
+    </div>
+  </div>
+  </section>
+
+</div>
+
+
+
+<!-- ══════════════════════════════
+     PANEL — ARCHIVES
+══════════════════════════════ -->
+<div class="tab-panel" id="panel-archives">
+  <div class="page-hero">
+    <div class="page-eyebrow">Historique des publications</div>
+    <h2>Archives</h2>
+    <p>Retrouvez ici l'ensemble des articles publiés sur Bibliobus44, classés par date et par thématique.</p>
+  </div>
+
+  <div class="articles-sort">
+
+    <label for="sort-archives">Trier</label>
+
+    <select id="sort-archives">
+        <option value="recent">Plus récents</option>
+        <option value="old">Plus anciens</option>
+    </select>
+
+  </div>
+
+  <section class="articles-section">
+    <h2 class="section-label">Archives</h2>
+    <div id="archives-grid" class="articles-grid"></div>
+  </section>
+  
+
+
+</div>
+
+
+
+
+<!-- ══════════════════════════════
+     PANEL — TAN'ECDOTES
+══════════════════════════════ -->
+<div class="tab-panel" id="panel-tanecdotes">
+  <div class="page-hero">
+    <div class="page-eyebrow">Histoires & curiosités</div>
+    <h2>Tan'ecdotes</h2>
+    <p>Anecdotes, petites histoires et curiosités sur les transports en commun de Loire-Atlantique — le côté inattendu du réseau.</p>
+  </div>
+
+  <div class="articles-sort">
+
+    <label for="sort-tanecdotes">Trier</label>
+
+    <select id="sort-tanecdotes">
+        <option value="recent">Plus récents</option>
+        <option value="old">Plus anciens</option>
+    </select>
+
+  </div>
+
+  <section class="articles-section">
+    <h2 class="section-label">Tan'ecdotes</h2>
+    <div id="tanecdotes-grid" class="articles-grid"></div>
+  </section> 
+</div>
+
+
+
+
+<!-- ══════════════════════════════
+     PANEL — EXTRAS
+══════════════════════════════ -->
+<div class="tab-panel" id="panel-extras">
+  <div class="page-hero">
+    <div class="page-eyebrow">Contenus complémentaires</div>
+    <h2>Extras</h2>
+    <p>Vidéos, photos, cartes, infographies et autres contenus autour des transports en commun de Loire-Atlantique.</p>
+  </div>
+
+  <div class="articles-sort">
+
+    <label for="sort-extras">Trier</label>
+
+    <select id="sort-extras">
+        <option value="recent">Plus récents</option>
+        <option value="old">Plus anciens</option>
+    </select>
+
+  </div>
+
+  <section class="articles-section">
+    <h2 class="section-label">Extras</h2>
+    <div id="extras-grid" class="articles-grid"></div>
+  </section>
+
+</div>
+
+
+
+
+<!-- ══════════════════════════════
+     PANEL — LIENS
+══════════════════════════════ -->
+<div class="tab-panel" id="panel-liens">
+  <div class="page-hero">
+    <div class="page-eyebrow">Ressources utiles</div>
+    <h2>Liens</h2>
+    <p>Sites officiels, outils de planification et ressources incontournables pour se déplacer en transports en commun dans le 44.</p>
+  </div>
+
+  <div class="links-grid">
+
+    <a href="https://naolib.fr" target="_blank" class="link-card">
+      <div class="link-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </div>
+      <div>
+        <span class="link-card-title">Naolib - Nantes métropôle mobilités</span>
+        <span class="link-card-desc">Site officiel du réseau Naolib : tramway, Chronobus, navibus, horaires et tarifs.</span>
+        <span class="link-card-url">naolib.fr →</span>
+      </div>
+    </a>
+
+    <a href="http://www.omnibus-nantes.fr/" target="_blank" class="link-card">
+      <div class="link-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <rect x="2" y="5" width="20" height="13" rx="2"/>
+          <circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/>
+          <line x1="2" y1="11" x2="22" y2="11"/>
+        </svg>
+      </div>
+      <div>
+        <span class="link-card-title">Omnibus Nantes</span>
+        <span class="link-card-desc">Le site officiel de l'association Omnibus Nantes, extrêmement complet en terme d'actualité, d'histoire et de photos des autobus et tramways d'hier et d'aujourd'hui.
+Propose également les informations sur les activités de l'association.</span>
+        <span class="link-card-url">omnibus-nantes.fr →</span>
+      </div>
+    </a>
+
+
+    <a href="https://yceo-mobilite.fr" target="_blank" class="link-card">
+      <div class="link-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </div>
+      <div>
+        <span class="link-card-title">Ycéo Mobilité - Saint Nazaire</span>
+        <span class="link-card-desc">Site officiel du réseau Ycéo : Hélyce, bus, horaires et tarifs.</span>
+        <span class="link-card-url">yceo-mobilite.fr →</span>
+      </div>
+    </a>
+
+
+    <a href="https://www.retrobus-nazairiens.fr/" target="_blank" class="link-card">
+      <div class="link-card-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+        </svg>
+      </div>
+      <div>
+        <span class="link-card-title">Rétro Bus Nazairiens</span>
+        <span class="link-card-desc">Le site officiel de l'association Retro Bus Nazairiens, qui sauvegarde des autobus historiques du réseau STRAN et propose des informations sur son histoire.</span>
+        <span class="link-card-url">retrobus-nazairiens.fr →</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     PANEL — LE CONCEPT
+══════════════════════════════ -->
+<div class="tab-panel" id="panel-le concept">
+  <div class="page-hero">
+    <div class="page-eyebrow"></div>
+    <h2>Le concept</h2>
+    <p>De Ouest Bus à Bibliobus44</p>
+  </div>
+
+  <div class="concept-layout">
+
+    <!-- COLONNE TEXTE (gauche) -->
+    <div class="concept-texte contenu">
+      <h3>Qu'est ce que Ouest Bus ?</h3>
+      <p>A l'origine - jadis, nous pouvons nous le permettre - Ouest Bus est un site web en ligne depuis le printemps de l'an 2003.</p>
+      <p>Le but était de proposer une alternative à l'excellent site "Qu'est-ce qui se tram à Nantes", pour proposer des photos et actualités sur les tramways, les autobus mais aussi les autocars de Loire-Atlantique.
+
+​</p>
+      <p>Mais le jeune gestionnaire du site - votre serviteur en l'occurrence - avait plein d'idées mais peu de connaissances techniques et encore moins d'organisation pour mener à bien ce projet. Alors durant plusieurs années (jusqu'en 2008) le site sera perpétuellement remanié à défaut d'être complet : mise en forme, couleurs, nouvelles rubriques souvent inachevées, mais toujours une photothèque qui s'enrichit au fil des balades sur les réseaux locaux et départementaux. Entre temps le site "Qu'est-ce qui se tram à Nantes" a fermé ses portes, et le site de référence se nomme "Tan'Express".</p>
+      <p>A partir de 2008, Ouest Bus se stabilise et arbore les couleurs blanches et vertes. De nombreux dossiers sont en ligne.
+
+​</p>
+      <p>L'arrivée de l'association "Omnibus Nantes" et de son site, et des missions au sein de cette dernière, imposent au webmestre de mettre un terme à Ouest Bus.
+
+</p>
+      <h3>Le retour !</h3>
+      <p>Tel un autobus destiné à la réforme qui effectuerait un come-back, Ouest Bus fait son retour le 23 novembre. A l'inverse du bus, espérons que sa réapparition sur le réseau Internet ne soit pas provisoire !
+
+​</p>
+      <p>Pour cette nouvelle mouture, priorité aux articles et aux dossier illustrés, sur des thèmes parfois originaux, atypiques et parfois classiques, en lien avec l'actualité passée, présente ou à venir des transports en commun de Loire-Atlantique. Certaines publication de l'ancien site seront remises en ligne. Certaines publication de "Qu'est-ce qui se tram à Nantes" vont également revivre, dans des versions proches des textes originaux (légèrement remis au goût du jour, avec l'aimable accord de son auteur).</p>
+      <p>Exit les photothèques et les présentations de chaque véhicule. Pour les intéressés, le site de l'association Omnibus Nantes propose un contenu riche avec pléthore de photos.</p>
+      <h3>Bibliobus44 ?</h3>
+      <p>Après une longue trève sans mise à jour (à vue de nez, trois ans), la réflexion d'une nouvelle version du site s'impose. Pas une page blanche, mais presque. Exit Ouest Bus, voici <strong>Bibliobus 44</strong>. Le site reste dans la continuité mais il veut parler à tout le monde : passionnés et mordues de bus et trams, ou simplement de passage, quelque soit l'âge. Les dossiers restent, de nouveaux articles apparaissent : Bibliobus 44 est, comme son nom l'indique, une bibliothèque aux textes accessibles à toutes et à tous. Un côté pédagogique assumé tout en abordant, suivant les actualités, les aspescts techniques, sans oublier les anecdotes et un oeil averti sur l'histoire des transports en commun nantais et du département.</p>
+    </div>
+
+    <!-- COLONNE IMAGES (droite) -->
+    <div class="concept-images">
+      <img src="Ouestbus1.gif" alt="" />
+      <img src="Ouestbus2.jpg" alt="" />
+      <img src="Ouestbus3.jpg" alt="" />
+      <img src="Ouestbus4.gif" alt="" />
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     PANEL — NEWS
+══════════════════════════════ -->
+<div class="tab-panel" id="panel-news">
+  <div class="page-hero">
+    <div class="page-eyebrow">Actualités</div>
+    <h2>News</h2>
+    <p>Retrouvez ici l'actualité et les dernières nouvelles des différents réseaux</p>
+  </div>
+
+  <div class="articles-sort">
+
+    <label for="sort-news">Trier</label>
+
+    <select id="sort-news">
+        <option value="recent">Plus récents</option>
+        <option value="old">Plus anciens</option>
+    </select>
+
+  </div>
+
+
+
+  <section class="articles-section">
+    <h2 class="section-label">News à venir</h2>
+    <div id="news-grid" class="articles-grid"></div>
+  </section>
+</div>
+
+
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div>
+    <div class="footer-brand">Bibliobus44</div>
+    <div class="footer-copy">© 2026 — Tous droits réservés·  Toute reproduction de photos ou de texte est soumise à autorisation.</div>
+  </div>
+
+  <div class="nav-socials">
+  <a href="https://www.youtube.com/channel/UCB799WwFL8Dr9U8VwmacTjA" target="_blank" class="social-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.6 2.8 12 2.8 12 2.8s-4.6 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.1.7 11.3v2c0 2.1.3 4.2.3 4.2s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.3 21.7 12 21.7 12 21.7s4.6 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.1.3-4.2v-2C23.3 9.1 23 7 23 7zm-13.5 6.8V9.5l5.3 2.2-5.3 2.1z"/>
+    </svg>
+  </a>
+  <a href="https://www.instagram.com/ouestbus/" target="_blank" class="social-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.2 4.8 1.7 5 5 .1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.2 3.3-1.7 4.8-5 5-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.2-4.8-1.7-5-5C2.1 15.6 2 15.2 2 12c0-3.2 0-3.6.1-4.8.2-3.3 1.7-4.8 5-5 1.2-.1 1.6-.1 4.9-.1zm0 1.8c-3.2 0-3.5 0-4.8.1-2.3.1-3.3 1.1-3.4 3.4C3.7 8.5 3.7 8.8 3.7 12s0 3.5.1 4.8c.1 2.3 1.1 3.3 3.4 3.4 1.3.1 1.6.1 4.8.1s3.5 0 4.8-.1c2.3-.1 3.3-1.1 3.4-3.4.1-1.3.1-1.6.1-4.8s0-3.5-.1-4.8c-.1-2.3-1.1-3.3-3.4-3.4-1.3-.1-1.6-.1-4.8-.1zm0 3c3.2 0 5.8 2.6 5.8 5.8S15.2 17.8 12 17.8 6.2 15.2 6.2 12 8.8 6.2 12 6.2zm0 1.8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm5-3.2c.7 0 1.3.6 1.3 1.3s-.6 1.3-1.3 1.3-1.3-.6-1.3-1.3.6-1.3 1.3-1.3z"/>
+    </svg>
+  </a>
+  <a href="https://x.com/OuestBus" target="_blank" class="social-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.2 2h3.5l-7.6 8.7L23 22h-7l-5.5-7.2L4.2 22H.7l8.2-9.3L1 2h7.1l5 6.6L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/>
+    </svg>
+  </a>
+  </div>
+  
+</footer>
+
+
+<script>
+  function showTab(tabId) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-article').classList.remove('active');
+    document.getElementById('panel-' + tabId).classList.add('active');
+    document.querySelector('[data-tab="' + tabId + '"]').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (tabId === 'articles' && articles.length > 0) {
+        afficherDerniersArticles("articles-grid");
+    }
+
+  }
+</script>
+
+<script src="bibliobus.js"></script>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;">
+  <button onclick="fermerLightbox()" style="position:absolute;top:1rem;right:1.5rem;background:none;border:none;color:white;font-size:2rem;cursor:pointer;">✕</button>
+  <button onclick="lightboxNav(-1)" style="position:absolute;left:1rem;background:none;border:none;color:white;font-size:2.5rem;cursor:pointer;">‹</button>
+  <img id="lightbox-img" style="max-width:90%;max-height:90vh;object-fit:contain;">
+  <button onclick="lightboxNav(1)" style="position:absolute;right:1rem;background:none;border:none;color:white;font-size:2.5rem;cursor:pointer;">›</button>
+</div>
+
+
+<div id="video-lightbox" class="hidden">
+
+    <div class="video-overlay">
+
+        <button id="close-video">
+            ✕
+        </button>
+
+        <div id="video-container"></div>
+
+    </div>
+
+</div>
+
+
+
+
+
+</body>
+
+</html>
+</div>
+
+
