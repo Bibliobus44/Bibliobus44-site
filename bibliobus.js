@@ -11,7 +11,7 @@ function convertirUrlImageDrive(url) {
 
 let articles = [];
 
-// --- PARSE TSV ---
+
 function parseCSV(csv) {
   csv = csv.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
   const lines = csv.split("\n").slice(1).filter(l => l.trim() !== "");
@@ -34,7 +34,7 @@ function parseCSVLine(line) {
   return cols;
 }
 
-// --- OUVRIR ARTICLE ---
+
 function ouvrirArticle(index) {
   const article = articles[index];
   if (!article) return;
@@ -47,7 +47,7 @@ function ouvrirArticle(index) {
   document.getElementById('page-article').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
   activerLiensAuto();
-  // Rendre les images cliquables
+  
   setTimeout(() => {
     const imgs = document.querySelectorAll('.article-contenu img');
     imgs.forEach((img, index) => {
@@ -62,12 +62,12 @@ function fermerArticle() {
   showTab('articles');
 }
 
-// --- NORMALISATION ---
+
 function normalizeCategory(str) {
   return str.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
-// --- AFFICHER ARTICLES ---
+
 function afficherArticlesParCategorie(categorie, gridId) {
   let ordre = "recent";
 
@@ -182,7 +182,7 @@ function formaterDate(dateString) {
   return `${jour}/${mois}/${annee} à ${heures}:${minutes}`;
 }
 
-// --- CHARGEMENT ARTICLES ---
+
 async function chargerArticles() {
   try {
     const res = await fetch(APPSCRIPT_URL + "?action=list");
@@ -214,7 +214,7 @@ async function chargerArticles() {
   }
 }
 
-// --- LIENS AUTO ---
+
 function activerLiensAuto() {
   const zone = document.querySelector(".article-contenu");
   if (!zone) return;
@@ -241,10 +241,10 @@ function activerLiensAuto() {
   remplacer(zone);
 }
 
-// --- LANCEMENT ---
+
 chargerArticles();
 
-// --- LIGHTBOX ---
+
 let lightboxImages = [];
 let lightboxIndex = 0;
 
@@ -266,7 +266,7 @@ function lightboxNav(direction) {
   document.getElementById('lightbox-img').src = lightboxImages[lightboxIndex].src;
 }
 
-// Fermer en cliquant en dehors de l'image
+
 const lightbox = document.getElementById('lightbox');
 
 if (lightbox) {
