@@ -21,7 +21,7 @@
       min-height: 100vh;
     }
 
-  /* ══ NAVBAR FUSIONNÉE ══ */
+ 
 
     .navbar {
       position: sticky;
@@ -42,7 +42,7 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.07);
     }
 
-  /* LOGO intégré */
+  
     .logo {
       font-family: 'Unbounded', sans-serif;
       font-weight: 900;
@@ -91,7 +91,7 @@
 
   
 
-  /* Onglets */
+  
     .nav-item {
       font-family: 'Unbounded', sans-serif;
       font-size: 0.62rem;
@@ -143,7 +143,7 @@
        opacity: 1;
     }
 
-   /* Réseaux sociaux */
+   
     .nav-socials {
 
        display: flex;
@@ -165,7 +165,7 @@
     }
 
 
-    /* ══ BOUTON RECHERCHE ══ */
+   
 
     .search-btn {
       flex-shrink: 0;
@@ -198,7 +198,7 @@
 
     
 
-    /* ══ FENÊTRE RECHERCHE ══ */
+   
 
     .search-overlay{
 
@@ -322,7 +322,7 @@
 
     }
     
-    /* ══ PANELS ══ */
+    
     .tab-panel { display: none; }
     .tab-panel.active { display: block; animation: fadeUp 0.3s ease both; }
 
@@ -331,7 +331,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ══ HERO (Articles) ══ */
+    
     .hero {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -414,7 +414,7 @@
 
    }
 
-    /* ══ GRILLE ARTICLES ══ */
+ 
     .articles-section { padding: 2.5rem 3rem 4rem; }
 
     .section-label {
@@ -461,7 +461,7 @@
     .placeholder h3 { font-family: 'Unbounded', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--ink); }
     .placeholder p { font-size: 0.88rem; color: var(--ink-soft); font-style: italic; max-width: 340px; line-height: 1.65; }
 
-    /* ══ PAGE HERO (autres onglets) ══ */
+    
     .page-hero {
       background: var(--white);
       border-bottom: 1px solid var(--border);
@@ -522,7 +522,7 @@
 
     }
 
-    /* ══ LIENS ══ */
+    
     .links-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -554,7 +554,7 @@
     .link-card-desc { font-size: 0.85rem; color: var(--ink-soft); font-style: italic; line-height: 1.55; display: block; margin-bottom: 6px; }
     .link-card-url { font-family: 'Unbounded', sans-serif; font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); }
 
-    /* ══ FOOTER ══ */
+    
     footer {
       border-top: 1px solid var(--border);
       padding: 1.8rem 3rem;
@@ -570,7 +570,7 @@
     .footer-links a { font-family: 'Unbounded', sans-serif; font-size: 0.6rem; color: var(--ink-soft); text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; transition: color 0.2s; }
     .footer-links a:hover { color: var(--accent); }
 
-    /* ══ RESPONSIVE ══ */
+    
     @media (max-width: 860px) {
       .site-header, footer { padding: 0 1.5rem; }
       .navbar { padding: 0 0.5rem; }
@@ -581,7 +581,7 @@
       footer { flex-direction: column; gap: 1rem; height: auto; padding: 1.5rem; text-align: center; }
     }
 
-    /* ══ CONTENU TEXTUEL ══ */
+    
 .contenu {
   max-width: 740px;
   padding: 3rem 3rem 5rem;
@@ -635,7 +635,7 @@
   padding: 0;
 }
 
-/* ══ CARDS ARTICLES ══ */
+
 .article-card {
   grid-column: span 4;
   background: var(--white);
@@ -713,7 +713,7 @@
   .article-card { grid-column: span 12; }
 }
 
-/* ══ PAGE ARTICLE ══ */
+
 #page-article {
   display: none;
 }
@@ -865,7 +865,7 @@
     overflow:hidden;
 }
 
-/* ══ ADMIN PANEL ══ */
+
 .hidden { display: none; }
 
 #admin-panel {
@@ -896,9 +896,7 @@
   z-index: 10000;
 }
 
-/* Bloc général d'image + texte */
 
-/* ══ BLOCS IMAGE — remplace toutes les anciennes règles ══ */
 
 .bi-droite{
   float:right;
@@ -922,7 +920,7 @@
   clear:both;
 }
 
-/* Bloc 2 images côte à côte */
+
 .bloc-2img {
   display: flex;
   gap: 1rem;
@@ -937,7 +935,7 @@
   object-fit: cover;
 }
 
-/* Texte dans article — ne pas affecter les blocs */
+
 .article-contenu > p {
   font-size: 1rem;
   color: #000;
@@ -957,17 +955,17 @@
   margin:1px auto;
   padding:30px;
 
-  border:1px solid #e5e5e5;   /* encadré fin */
+  border:1px solid #e5e5e5;   
   background:#fff;
 
   font-size:18px;
   line-height:1.7;
   color:#000;
 
-  text-align:justify; /* texte aligné */
+  text-align:justify; 
 }
 
-/* Optionnel : encadrer chaque bloc pour admin */
+
 .bloc-admin {
   border: 1px solid #cdd4c8;
   padding: 0.5rem;
@@ -977,8 +975,8 @@
 
 .article-intro {
   font-weight: bold;
-  margin-bottom: 1.5rem; /* garde un espace après l’intro */
-  font-size: 1.1rem;     /* optionnel : légèrement plus grand */
+  margin-bottom: 1.5rem; 
+  font-size: 1.1rem;     
 }
 
 .editor{
@@ -1029,7 +1027,7 @@
 
 @media (max-width:768px){
 
-    /* Affiche le bouton hamburger */
+    
     #mobile-menu-btn{
         display:block;
         background:none;
@@ -1039,7 +1037,7 @@
         cursor:pointer;
     }
 
-    /* Cache les onglets */
+   
     .nav-links{
         display:none;
         flex-direction:column;
@@ -1048,12 +1046,12 @@
         margin-top:1rem;
     }
 
-    /* Affiche les onglets quand le menu est ouvert */
+    
     .nav-links.active{
         display:flex;
     }
 
-    /* Navbar sur mobile */
+    
     .navbar{
         display:flex;
         justify-content:space-between;
@@ -1113,7 +1111,7 @@
     
 }
 
-/* interface admin  */
+
     body{ font-family: 'Unbounded', sans-serif; padding: 2rem; background: #f8faf6; color: #1a1f18; }
     h1 { margin-bottom: 2rem; }
     #login-box { max-width: 300px; margin-bottom: 2rem; }
@@ -1124,14 +1122,14 @@
     form { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; }
     .hidden { display: none; }
 
-    /* Blocs image + texte */
+    
     .bloc-admin { border: 1px solid #cdd4c8; padding: 0.5rem; border-radius: 4px; margin-bottom: 1rem; }
     .bloc-image { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
     .bloc-image img { max-width: 40%; height: auto; }
     .bloc-image.droite { flex-direction: row-reverse; }
     
 
-    /* Bloc introduction */
+    
     .article-intro { font-weight: 500; margin-bottom: 1.5rem; font-size: 1.1rem; }
 
     .editor-toolbar {
