@@ -63,8 +63,9 @@
     }
 
     .logo-icon {
-      width: 70px;
+      width: auto;
       height: 70px;
+      object-fit: contain;
 
       background: var(--accent);
 
@@ -88,6 +89,12 @@
 
       margin-top: 2px;
     }
+
+    .hero-logo {
+      width: 420px;
+      height: auto;
+      object-fit: contain;
+    } 
 
   
 
